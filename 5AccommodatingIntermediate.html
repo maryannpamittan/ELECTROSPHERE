@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+  apiKey: "AIzaSyBvZVUW1xG7uoeHO19bESOQRQCYuPDOzRI",
+  authDomain: "kolbs-website.firebaseapp.com",
+  databaseURL: "https://kolbs-website-default-rtdb.firebaseio.com/",
+  projectId: "kolbs-website",
+  storageBucket: "kolbs-website.appspot.com",
+  messagingSenderId: "297055725374",
+  appId: "1:297055725374:web:9d5bfc9e2ea89427d86e6f"
+};
+
+firebase.initializeApp(firebaseConfig);
+</script> 
+
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style1.css">
+
+</head>
+<body>
+
+<header class="header">
+   
+   <section class="flex">
+      <a href="dashboard.html" class="logo">
+        <img src="assets/logo.png" alt="Website Logo" id="logo">
+      </a>
+
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-lock"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+
+      <div class="profile">
+         <img src="assets/anonymous.png" class="image" alt="">
+         <h3 class="name">Name</h3>
+         <p class="role">Student</p>
+         <p class="email">email@gmail.com</p>
+         <div class="flex-btn">
+            <a href="index.html" class="option-btn">logout</a>
+         </div>
+      </div>
+
+   </section>
+
+</header>   
+
+<div class="side-bar">
+
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+
+   <div class="profile">
+      <img src="assets/anonymous.png" class="image" alt="">
+      <h3 class="name">name</h3>
+      <p class="role">student number</p>
+      <p class="email">email@gmail.com</p>
+      <a href="index.html" class="btn">Logout</a>
+   </div>
+
+   <nav class="navbar">
+      <a href="dashboard.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+      <a href="kolb-questionnaire.html"><i class="fa-solid fa-pen-to-square"></i><span>Kolb's LSI Questionnaire</span></a>
+      <a href="Experiments.html"><i class="fas fa-vr-cardboard"></i><span>Experiment</span></a>
+      <a href="Assessment.html"><i class="fas fa-pencil-square"></i><span>Assessment</span></a>
+      <a href="Modules.html"><i class="fas fa-book"></i><span>Modules</span></a>
+      <a href="DataProfile.html"><i class="fa-solid fa-user-gear"></i><span>Data Profile</span></a>
+
+    </nav>
+
+</div>
+
+
+
+<!--start here-->
+<style>
+  .grid-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+  }
+
+  .header-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .title-header {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: left;
+      color: rgb(235, 135, 4);
+      font-family: 'Roboto', sans-serif;
+  }
+
+  .header-buttons {
+    display: flex;
+    gap: 20px;
+    
+  }
+
+  .header-buttons .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    background-color: #032b4b;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .header-buttons .btn:hover {
+    background-color: #989d32;
+  }
+
+  .container-box {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .container-box iframe {
+    width: 100%;
+    height: 450px;
+    border: none;
+    border-radius: 12px;
+  }
+</style>
+
+<!-- Dashboard Screen -->
+<section class="grid-screen">
+
+  <!-- Header -->
+  <div class="header-container">
+    <h2 class="title-header">
+      Field Effect Transistor Biasing (Intermediate) <br>
+   ACCOMMODATING</h2>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+      <div class="header-buttons">
+         <a href="post-assessment5.html" class="btn" style="min-width: 180px;">Proceed to Post Test</a>
+         <a href="Experiments.html" class="btn" style="min-width: 120px;">Back</a>
+
+      </div>
+  </div>
+
+  <!-- Canva Embed -->
+  <div class="container-box">
+    <iframe 
+      src="https://www.canva.com/design/DAGq96vrIEc/7KHUQ5Xc_PV5EkY9QcDUhw/view?embed" 
+      allowfullscreen="true" 
+      loading="lazy">
+    </iframe>
+  </div>
+</section>
+
+
+</footer>
+<footer class="footer">
+
+   &copy; 2025 <span><b>ELECTROSPHERE</b></span> | all rights reserved!
+
+</footer>
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+
+
+
+<script>
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      const uid = user.uid;
+
+      // Get user details from database
+      firebase.database().ref('users/' + uid).once('value').then(function(snapshot) {
+        const userData = snapshot.val();
+
+        if (userData) {
+          // Update profile text (main header)
+          document.querySelectorAll('.profile .name')[0].textContent = userData.name;
+          document.querySelectorAll('.profile .role')[0].textContent = userData.studentNumber;
+          document.querySelectorAll('.profile .email')[0].textContent = userData.email;
+
+          // Update sidebar profile text
+          document.querySelectorAll('.profile .name')[1].textContent = userData.name;
+          document.querySelectorAll('.profile .role')[1].textContent = userData.studentNumber;
+          document.querySelectorAll('.profile .email')[1].textContent = userData.email;
+        }
+      });
+    } else {
+      // Redirect to login if not authenticated
+      window.location.href = "login.html";
+    }
+  });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

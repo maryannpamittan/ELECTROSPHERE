@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+  apiKey: "AIzaSyBvZVUW1xG7uoeHO19bESOQRQCYuPDOzRI",
+  authDomain: "kolbs-website.firebaseapp.com",
+  databaseURL: "https://kolbs-website-default-rtdb.firebaseio.com/",
+  projectId: "kolbs-website",
+  storageBucket: "kolbs-website.appspot.com",
+  messagingSenderId: "297055725374",
+  appId: "1:297055725374:web:9d5bfc9e2ea89427d86e6f"
+};
+
+firebase.initializeApp(firebaseConfig);
+</script> 
+
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>dashboard</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+   <link rel="stylesheet" href="css/style1.css">
+
+</head>
+<body>
+
+<header class="header">
+   
+   <section class="flex">
+      <a href="dashboard.html" class="logo">
+        <img src="assets/logo.png" alt="Website Logo" id="logo">
+      </a>
+
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-lock"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+
+      <div class="profile">
+         <img src="assets/anonymous.png" class="image" alt="">
+         <h3 class="name">Name</h3>
+         <p class="role">Student</p>
+         <p class="email">email@gmail.com</p>
+         <div class="flex-btn">
+            <a href="index.html" class="option-btn">logout</a>
+         </div>
+      </div>
+
+   </section>
+
+</header>   
+
+<div class="side-bar">
+
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+
+   <div class="profile">
+      <img src="assets/anonymous.png" class="image" alt="">
+      <h3 class="name">name</h3>
+      <p class="role">student number</p>
+      <p class="email">email@gmail.com</p>
+      <a href="index.html" class="btn">Logout</a>
+   </div>
+
+   <nav class="navbar">
+      <a href="dashboard.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+      <a id="kolbLink" class="locked" href="#" onclick="return false;">
+        <i class="fa-solid fa-pen-to-square"></i><span>Kolb's LSI Questionnaire</span>
+      </a>
+      <a id="experimentLink" class="locked" href="#" onclick="return false;">
+        <i class="fas fa-vr-cardboard"></i><span>Experiment</span>
+      </a>
+        <a id="assessmentLink" class="locked" href="#" onclick="return false;">
+        <i class="fas fa-pencil-square"></i><span>Assessment</span>
+      </a>
+      <a href="Modules.html"><i class="fas fa-book"></i><span>Modules</span></a>
+      <a href="DataProfile.html"><i class="fa-solid fa-user-gear"></i><span>Data Profile</span></a>
+
+   </nav>
+
+</div>
+
+<!---start here-->
+<div class="biodata-container">
+  <h2>DATA INFORMATION RECEIPT</h2>
+  <table class="biodata-table">
+    <tr>
+      <td><strong>Full Name:</strong></td>
+      <td><span id="db-name">Loading...</span></td>
+    </tr>
+    <tr>
+      <td><strong>Student Number:</strong></td>
+      <td><span id="db-student">Loading...</span></td>
+    </tr>
+    <tr>
+      <td><strong>Email Address:</strong></td>
+      <td><span id="db-email">Loading...</span></td>
+    </tr>
+
+    <tr>
+  <td><strong>Group Selection:</strong></td>
+  <td><span id="db-group">Loading...</span></td>
+</tr>
+<tr>
+   <td><strong>Timestamp:</strong></td>
+   <td><span id="db-timestamp">Loading...</span></td>
+</tr>
+<tr>
+   <td><strong>Kolb Responses:</strong></td>
+   <td><ul id="db-responses" style="padding-left: 20px; list-style: disc;"></ul></td>
+</tr>
+
+<tr>
+  <td><strong>Kolb Scores:</strong></td>
+  <td><ul id="db-scores" style="padding-left: 20px; list-style: disc;"></ul></td>
+</tr>
+<tr>
+  <td><strong>User Level:</strong></td>
+  <td><span id="db-level">Loading...</span></td>
+</tr>
+<tr>
+  <td><strong>Learning Style:</strong></td>
+  <td><span id="db-style">Loading...</span></td>
+</tr>
+<tr>
+  <td><strong>Pretest 5 Answers:</strong></td>
+  <td><ul id="db-pretest5" style="padding-left: 20px; list-style: disc;"></ul></td>
+</tr>
+<tr>
+  <td><strong>Pretest 5 Timestamp:</strong></td>
+  <td><span id="db-pretest5-timestamp">Loading...</span></td>
+</tr>
+<tr>
+  <td><strong>Pretest 5 Level:</strong></td>
+  <td><span id="db-pretest5-level">Loading...</span></td>
+</tr>
+<tr>
+  <td><strong>Pretest 5 Total Score:</strong></td>
+  <td><span id="db-pretest5-score">Loading...</span></td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+  </table>
+</div>
+
+<style>
+   .locked {
+      opacity: 0.6;
+      cursor: not-allowed;
+      pointer-events: auto;
+    }
+
+    .locked i {
+      margin-right: 5px;
+      color: #999;
+    }
+   .biodata-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  border: 2px solid #c21414;
+  border-radius: 12px;
+  background-color: #caecf5;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.biodata-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ff0000;
+  font-size: 25px;
+}
+
+.biodata-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.biodata-table td {
+  padding: 5px 50px;
+  vertical-align: top;
+}
+
+.biodata-table td:first-child {
+  width: 40%;
+  font-weight: 800;
+  font-size: 15px;
+  color: #022267;
+}
+
+.biodata-table td:last-child {
+  color: #022267;
+  font-size: 15px;
+
+}
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</footer>
+<footer class="footer">
+
+   &copy; 2025 <span><b>ELECTROSPHERE</b></span> | all rights reserved!
+
+</footer>
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+
+<script>
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      const uid = user.uid;
+
+      // Get basic user info
+      firebase.database().ref('users/' + uid).once('value').then(function(snapshot) {
+        const userData = snapshot.val();
+        if (userData) {
+          // Profile headers
+          document.querySelectorAll('.profile .name')[0].textContent = userData.name;
+          document.querySelectorAll('.profile .role')[0].textContent = userData.studentNumber;
+          document.querySelectorAll('.profile .email')[0].textContent = userData.email;
+
+          document.querySelectorAll('.profile .name')[1].textContent = userData.name;
+          document.querySelectorAll('.profile .role')[1].textContent = userData.studentNumber;
+          document.querySelectorAll('.profile .email')[1].textContent = userData.email;
+
+          // Biodata fields
+          document.getElementById("db-name").textContent = userData.name;
+          document.getElementById("db-student").textContent = userData.studentNumber;
+          document.getElementById("db-email").textContent = userData.email;
+          document.getElementById("db-group").textContent = userData.groupSelection || "Not selected";
+        }
+      });
+
+      // Get kolb_responses (timestamp, responses, preferred_style)
+      firebase.database().ref('users/' + uid + '/kolb_responses').once('value').then(function(snapshot) {
+        const kolbData = snapshot.val();
+
+        // Timestamp
+        const timestamp = kolbData?.timestamp;
+        if (timestamp) {
+          const date = new Date(timestamp);
+          document.getElementById("db-timestamp").textContent = date.toLocaleString();
+        } else {
+          document.getElementById("db-timestamp").textContent = "N/A";
+        }
+
+        // Kolb responses
+        const responses = kolbData?.responses;
+        const responsesList = document.getElementById("db-responses");
+        responsesList.innerHTML = '';
+        if (responses) {
+          Object.entries(responses).forEach(([key, value]) => {
+            const li = document.createElement('li');
+            li.textContent = `${key}: ${value}`;
+            responsesList.appendChild(li);
+          });
+        } else {
+          const li = document.createElement('li');
+          li.textContent = "No responses found";
+          responsesList.appendChild(li);
+        }
+
+        // Preferred Style (inside kolb_responses)
+        const preferredStyle = kolbData?.preferred_style;
+        if (preferredStyle) {
+          document.getElementById("db-level").textContent = preferredStyle.level || "N/A";
+          document.getElementById("db-style").textContent = preferredStyle.style || "N/A";
+
+          // Scores
+          const scores = preferredStyle.scores;
+          const scoresList = document.getElementById("db-scores");
+          scoresList.innerHTML = '';
+          if (scores) {
+            Object.entries(scores).forEach(([key, value]) => {
+              const li = document.createElement('li');
+              li.textContent = `${key}: ${value}`;
+              scoresList.appendChild(li);
+            });
+          } else {
+            const li = document.createElement('li');
+            li.textContent = "No scores available";
+            scoresList.appendChild(li);
+          }
+        } else {
+          document.getElementById("db-level").textContent = "N/A";
+          document.getElementById("db-style").textContent = "N/A";
+          const li = document.createElement('li');
+          li.textContent = "No scores available";
+          document.getElementById("db-scores").appendChild(li);
+        }
+      });
+
+      // Get Pretest 5 answers
+      firebase.database().ref('users/' + uid + '/progress/pretest5Answers/answers').once('value').then(function(snapshot) {
+      const pretestAnswers = snapshot.val();
+      const answersList = document.getElementById("db-pretest5");
+      answersList.innerHTML = ''; // Clear list first
+
+      if (pretestAnswers) {
+         Object.entries(pretestAnswers).forEach(([key, value]) => {
+            const li = document.createElement('li');
+            li.textContent = `${key}: ${value}`;
+            answersList.appendChild(li);
+         });
+      } else {
+         const li = document.createElement('li');
+         li.textContent = "No answers found";
+         answersList.appendChild(li);
+      }
+      });
+      // Get Pretest 5 timestamp
+      firebase.database().ref('users/' + uid + '/progress/pretest5Answers/timestamp')
+      .once('value')
+      .then(function(snapshot) {
+         const timestamp = snapshot.val();
+         const timestampElement = document.getElementById("db-pretest5-timestamp");
+
+         if (timestamp) {
+            const date = new Date(timestamp);
+            timestampElement.textContent = date.toLocaleString(); // Convert to readable format
+         } else {
+            timestampElement.textContent = "No timestamp available";
+         }
+      });
+      // Get Pretest 5 metadata: level and totalScore
+      firebase.database().ref('users/' + uid + '/progress/pretest5Answers')
+        .once('value')
+        .then(function(snapshot) {
+          const pretestData = snapshot.val();
+
+          // Level
+          document.getElementById("db-pretest5-level").textContent = pretestData?.level || "N/A";
+
+          // Score
+          document.getElementById("db-pretest5-score").textContent = pretestData?.totalScore !== undefined
+            ? pretestData.totalScore
+            : "N/A";
+        });
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+    } else {
+      window.location.href = "login.html";
+    }
+  });
+</script>
+
+
+
+
+</body>
+</html>

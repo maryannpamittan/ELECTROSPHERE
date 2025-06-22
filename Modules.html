@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Firebase App (core) -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+
+<!-- Firebase Authentication -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+
+<!-- Firebase Database -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+  apiKey: "AIzaSyBvZVUW1xG7uoeHO19bESOQRQCYuPDOzRI",
+  authDomain: "kolbs-website.firebaseapp.com",
+  databaseURL: "https://kolbs-website-default-rtdb.firebaseio.com/",
+  projectId: "kolbs-website",
+  storageBucket: "kolbs-website.appspot.com",
+  messagingSenderId: "297055725374",
+  appId: "1:297055725374:web:9d5bfc9e2ea89427d86e6f"
+};
+
+firebase.initializeApp(firebaseConfig);
+</script> 
+
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>dashboard</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style1.css">
+
+</head>
+<body>
+
+<header class="header">
+   
+   <section class="flex">
+      <a href="dashboard.html" class="logo">
+        <img src="assets/logo.png" alt="Website Logo" id="logo">
+      </a>
+
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-lock"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+
+      <div class="profile">
+         <img src="assets/anonymous.png" class="image" alt="">
+         <h3 class="name">Name</h3>
+         <p class="role">Student</p>
+         <p class="email">email@gmail.com</p>
+         <div class="flex-btn">
+            <a href="index.html" class="option-btn">logout</a>
+         </div>
+      </div>
+
+   </section>
+
+</header>   
+
+<div class="side-bar">
+
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+
+   <div class="profile">
+      <img src="assets/anonymous.png" class="image" alt="">
+      <h3 class="name">name</h3>
+      <p class="role">student number</p>
+      <p class="email">email@gmail.com</p>
+      <a href="index.html" class="btn">Logout</a>
+   </div>
+
+   <nav class="navbar">
+      <a href="dashboard.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+      <a id="kolbLink" class="locked" href="#" onclick="return false;">
+        <i class="fa-solid fa-pen-to-square"></i><span>Kolb's LSI Questionnaire</span>
+      </a>
+      <a id="experimentLink" class="locked" href="#" onclick="return false;">
+        <i class="fas fa-vr-cardboard"></i><span>Experiment</span>
+      </a>
+        <a id="assessmentLink" class="locked" href="#" onclick="return false;">
+        <i class="fas fa-pencil-square"></i><span>Assessment</span>
+      </a>
+      <a href="Modules.html"><i class="fas fa-book"></i><span>Modules</span></a>
+      <a href="DataProfile.html"><i class="fa-solid fa-user-gear"></i><span>Data Profile</span></a>
+
+    </nav>
+
+</div>
+
+<!--start here-->
+<style>
+    
+    .locked {
+      opacity: 0.6;
+      cursor: not-allowed;
+      pointer-events: auto;
+    }
+
+    .locked i {
+      margin-right: 5px;
+      color: #999;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #dce9f0;
+    }
+    .dashboard-grid {
+      padding: 5rem;
+    }
+    .breadcrumb {
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #01216b;
+    }
+    .folder-container, .file-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+    }
+    .folder, .file {
+      background: #129ff7;
+      color: rgb(255, 255, 255);
+      padding: 1.5rem;
+      font-size: 1.3rem;
+      width: 200px;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(117, 148, 234, 0.585);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .folder:hover, .file:hover {
+      transform: translateY(-5px);
+    }
+    .file-viewer {
+      margin-top: 2rem;
+      display: none;
+    }
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+    }
+    .file-viewer iframe {
+      width: 100%;
+      height: 100vh;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="dashboard-grid">
+  <div class="breadcrumb" id="breadcrumb"></div>
+
+  <div class="folder-container" id="main-modules">
+    <div class="folder" onclick="openModule('Module 5')">📁 Module 5</div>
+    <div class="folder" onclick="openModule('Module 6')">📁 Module 6</div>
+    <div class="folder" onclick="openModule('Module 7')">📁 Module 7</div>
+  </div>
+
+  <div class="folder-container file-container" id="module-files" style="display: none;"></div>
+
+  <div class="file-viewer" id="file-viewer">
+    <iframe id="pdf-viewer" src=""></iframe>
+  </div>
+</section>
+
+<script>
+  const breadcrumb = document.getElementById('breadcrumb');
+  const moduleFiles = document.getElementById('module-files');
+  const mainModules = document.getElementById('main-modules');
+  const fileViewer = document.getElementById('file-viewer');
+  const pdfViewer = document.getElementById('pdf-viewer');
+
+  let currentModule = '';
+  let currentFile = '';
+
+  const modules = {
+    "Module 5": [
+      { name: "Accomodating", path: "assets/Accommodating.pdf" },
+      { name: "Assimilating", path: "assets/Assimilating.pdf" },
+      { name: "Pragmatist", path: "assets/Pragmatist.pdf" },
+      { name: "Reflector", path: "assets/Reflector.pdf" }
+    ],
+    "Module 6": [
+      { name: "Experiment 6", path: "assets/Experiment 6.pdf" },
+    ],
+    "Module 7": [
+      { name: "Experiment 7", path: "assets/Experiment 7.pdf" }
+    ]
+  };
+
+  function updateBreadcrumb(parts) {
+    breadcrumb.innerHTML = parts.map((part, index) => {
+      if (index === parts.length - 1) {
+        return `<span class="current">${part}</span>`;
+      } else if (index === 0) {
+        return `<span style="cursor:pointer" onclick="goToModules()">Module</span>`;
+      } else if (index === 1) {
+        return `<span style="cursor:pointer" onclick="openModule('${part}')">${part}</span>`;
+      } else {
+        return part;
+      }
+    }).join(' &gt; ');
+  }
+
+  function goToModules() {
+    currentModule = '';
+    currentFile = '';
+    updateBreadcrumb(['Module']);
+    mainModules.style.display = 'flex';
+    moduleFiles.style.display = 'none';
+    fileViewer.style.display = 'none';
+    pdfViewer.src = '';
+  }
+
+  function openModule(moduleName) {
+    currentModule = moduleName;
+    currentFile = '';
+    updateBreadcrumb(['Module', moduleName]);
+    mainModules.style.display = 'none';
+    moduleFiles.innerHTML = '';
+    fileViewer.style.display = 'none';
+    pdfViewer.src = '';
+    moduleFiles.style.display = 'flex';
+
+    modules[moduleName].forEach(file => {
+      const div = document.createElement('div');
+      div.className = 'file';
+      div.innerText = `📄 ${file.name}`;
+      div.onclick = () => openFile(moduleName, file.name, file.path);
+      moduleFiles.appendChild(div);
+    });
+  }
+
+  function openFile(moduleName, fileName, filePath) {
+    currentFile = fileName;
+    updateBreadcrumb(['Module', moduleName, fileName]);
+    pdfViewer.src = filePath;
+    fileViewer.style.display = 'block';
+  }
+
+  // Initial breadcrumb state
+  goToModules();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</footer>
+<footer class="footer">
+
+   &copy; 2025 <span><b>ELECTROSPHERE</b></span> | all rights reserved!
+
+</footer>
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+
+
+
+<script>
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      const uid = user.uid;
+
+      // Get user details from database
+      firebase.database().ref('users/' + uid).once('value').then(function(snapshot) {
+        const userData = snapshot.val();
+
+        if (userData) {
+          // Update profile text (main header)
+          document.querySelectorAll('.profile .name')[0].textContent = userData.name;
+          document.querySelectorAll('.profile .role')[0].textContent = userData.studentNumber;
+          document.querySelectorAll('.profile .email')[0].textContent = userData.email;
+
+          // Update sidebar profile text
+          document.querySelectorAll('.profile .name')[1].textContent = userData.name;
+          document.querySelectorAll('.profile .role')[1].textContent = userData.studentNumber;
+          document.querySelectorAll('.profile .email')[1].textContent = userData.email;
+        }
+      });
+    } else {
+      // Redirect to login if not authenticated
+      window.location.href = "login.html";
+    }
+  });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

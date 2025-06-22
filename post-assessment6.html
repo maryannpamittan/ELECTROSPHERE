@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Firebase App (core) -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+
+<!-- Firebase Authentication -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+
+<!-- Firebase Database -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+  apiKey: "AIzaSyBvZVUW1xG7uoeHO19bESOQRQCYuPDOzRI",
+  authDomain: "kolbs-website.firebaseapp.com",
+  databaseURL: "https://kolbs-website-default-rtdb.firebaseio.com/",
+  projectId: "kolbs-website",
+  storageBucket: "kolbs-website.appspot.com",
+  messagingSenderId: "297055725374",
+  appId: "1:297055725374:web:9d5bfc9e2ea89427d86e6f"
+};
+
+firebase.initializeApp(firebaseConfig);
+</script> 
+
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>dashboard</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style1.css">
+
+</head>
+<body>
+
+<header class="header">
+   
+   <section class="flex">
+      <a href="dashboard.html" class="logo">
+        <img src="assets/logo.png" alt="Website Logo" id="logo">
+      </a>
+
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-lock"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+
+      <div class="profile">
+         <img src="assets/anonymous.png" class="image" alt="">
+         <h3 class="name">Name</h3>
+         <p class="role">Student</p>
+         <p class="email">email@gmail.com</p>
+         <div class="flex-btn">
+            <a href="index.html" class="option-btn">logout</a>
+         </div>
+      </div>
+
+   </section>
+
+</header>   
+
+<div class="side-bar">
+
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+
+   <div class="profile">
+      <img src="assets/anonymous.png" class="image" alt="">
+      <h3 class="name">name</h3>
+      <p class="role">student number</p>
+      <p class="email">email@gmail.com</p>
+      <a href="index.html" class="btn">Logout</a>
+   </div>
+
+    <nav class="navbar">
+      <a href="dashboard.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+      <a id="kolbLink" class="locked" href="#" onclick="return false;">
+        <i class="fa-solid fa-pen-to-square"></i><span>Kolb's LSI Questionnaire</span>
+      </a>
+    <a id="experimentLink" class="locked" href="#" onclick="return false;"><i class="fas fa-vr-cardboard"></i><span>Experiment</span></a>
+    <a id="assessmentLink" class="locked" href="#" onclick="return false;"><i class="fas fa-pencil-square"></i><span>Assessment</span></a>
+      <a href="Modules.html"><i class="fas fa-book"></i><span>Modules</span></a>
+      <a href="DataProfile.html"><i class="fa-solid fa-user-gear"></i><span>Data Profile</span></a>
+
+    </nav>
+
+
+    <style>
+      .navbar a.locked {
+        pointer-events: none;
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    </style>
+
+</div>
+
+<!---start-->
+
+<style>
+  /* Fixed button style */
+  .fixed-buttons {
+    position: fixed;
+    top: 200px; /* adjust as needed */
+    right: 30px; /* adjust as needed */
+    z-index: 9999;
+    display: flex;
+    gap: 30px;
+  }
+
+  .fixed-buttons a,
+  .fixed-buttons button {
+    padding: 10px 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 4px rgba(180, 213, 249, 0.434);
+  }
+
+  .fixed-buttons a {
+    background-color: #034fa7;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+  }
+
+  .fixed-buttons button {
+    background-color: #034fa7;
+    color: white;
+    font-size: 12px;
+  }
+</style>
+
+<section class="dashboard-grid">
+  <h1>Experiment 6 - Post-Assessment</h1>
+
+  <!-- Fixed Buttons -->
+  <div class="fixed-buttons">
+    <a href="dashboard.html">⬅ Back</a>
+    <button onclick="showCustomAlert()">Submit</button>
+  </div>
+
+  <div class="container" style="margin-top: 20px;">
+    <!-- Embedded Google Form -->
+    <iframe 
+      src="https://docs.google.com/forms/d/e/1FAIpQLSdDy_lQ_GGHbuOIhj5l8NHPCVPhCNWS-x2c0kaEUM7bZ82Tsw/viewform?embedded=true"
+      width="100%" 
+      height="3850" 
+      frameborder="0" 
+      marginheight="0" 
+      marginwidth="0" 
+      style="max-width: 100%; border: none;">
+      Loading…
+    </iframe>
+  </div>
+</section>
+
+<!-- Custom Modal Alert -->
+<div id="customAlert" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color: rgba(0,0,0,0.5); z-index:10000; justify-content:center; align-items:center;">
+  <div style="background:rgb(2, 89, 135); padding:30px; border-radius:10px; max-width:500px; text-align:center; box-shadow: 0 0 20px rgba(255, 255, 255, 0.359);">
+    <h2 style="font-size: 24px;color: white;">Well done! 🎉</h2>
+    <p style="font-size: 18px;color: rgb(219, 227, 238)">You’ve successfully completed the Post-Test 6.</p>
+    <p style="font-size: 16px;color: rgb(219, 227, 238)"><strong>Before clicking OK✅, make sure you have submitted your answers in the embedded Google Form.</strong></p>
+
+    <div style="margin-top:10px;">
+      <button onclick="closeCustomAlert()" style="padding: 10px 20px; background-color: #054766; color: white; border: none; border-radius: 5px; margin-right: 10px;">Back</button>
+      <button onclick="window.location.href='end.html'" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">OK</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showCustomAlert() {
+    document.getElementById("customAlert").style.display = "flex";
+  }
+
+  function closeCustomAlert() {
+    document.getElementById("customAlert").style.display = "none";
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</footer>
+<footer class="footer">
+
+   &copy; 2025 <span><b>ELECTROSPHERE</b></span> | all rights reserved!
+
+</footer>
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+
+
+
+<script>
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      const uid = user.uid;
+
+      // Get user details from database
+      firebase.database().ref('users/' + uid).once('value').then(function(snapshot) {
+        const userData = snapshot.val();
+
+        if (userData) {
+          // Update profile text (main header)
+          document.querySelectorAll('.profile .name')[0].textContent = userData.name;
+          document.querySelectorAll('.profile .role')[0].textContent = userData.studentNumber;
+          document.querySelectorAll('.profile .email')[0].textContent = userData.email;
+
+          // Update sidebar profile text
+          document.querySelectorAll('.profile .name')[1].textContent = userData.name;
+          document.querySelectorAll('.profile .role')[1].textContent = userData.studentNumber;
+          document.querySelectorAll('.profile .email')[1].textContent = userData.email;
+        }
+      });
+    } else {
+      // Redirect to login if not authenticated
+      window.location.href = "login.html";
+    }
+  });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+  apiKey: "AIzaSyBvZVUW1xG7uoeHO19bESOQRQCYuPDOzRI",
+  authDomain: "kolbs-website.firebaseapp.com",
+  databaseURL: "https://kolbs-website-default-rtdb.firebaseio.com/",
+  projectId: "kolbs-website",
+  storageBucket: "kolbs-website.appspot.com",
+  messagingSenderId: "297055725374",
+  appId: "1:297055725374:web:9d5bfc9e2ea89427d86e6f"
+};
+
+firebase.initializeApp(firebaseConfig);
+</script> 
+
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>dashboard</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+   <link rel="stylesheet" href="css/style1.css">
+
+</head>
+<body>
+
+<header class="header">
+   
+   <section class="flex">
+      <a href="dashboard.html" class="logo">
+        <img src="assets/logo.png" alt="Website Logo" id="logo">
+      </a>
+
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-lock"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+
+      <div class="profile">
+         <img src="assets/anonymous.png" class="image" alt="">
+         <h3 class="name">Name</h3>
+         <p class="role">Student</p>
+         <p class="email">email@gmail.com</p>
+         <div class="flex-btn">
+            <a href="index.html" class="option-btn">logout</a>
+         </div>
+      </div>
+
+   </section>
+
+</header>   
+
+<div class="side-bar">
+
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+
+   <div class="profile">
+      <img src="assets/anonymous.png" class="image" alt="">
+      <h3 class="name">name</h3>
+      <p class="role">student number</p>
+      <p class="email">email@gmail.com</p>
+      <a href="index.html" class="btn">Logout</a>
+   </div>
+
+   <nav class="navbar">
+      <a href="dashboard.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+      <a href="kolb-questionnaire.html"><i class="fa-solid fa-pen-to-square"></i><span>Kolb's LSI Questionnaire</span></a>
+      <a href="Experiments.html"><i class="fas fa-vr-cardboard"></i><span>Experiment</span></a>
+      <a href="Assessment.html"><i class="fas fa-pencil-square"></i><span>Assessment</span></a>
+      <a href="Modules.html"><i class="fas fa-book"></i><span>Modules</span></a>
+      <a href="DataProfile.html"><i class="fa-solid fa-user-gear"></i><span>Data Profile</span></a>
+
+   </nav>
+
+</div>
+
+<!---start here-->
+<section class="box-container" style="padding: 2rem; margin: 2rem;">
+  <div class="box" style="background: #f0f8ff; padding: 2rem; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); text-align: center;">
+    <h2 style="font-size: 3rem; color: #06396c;">🧠 Learning Style📚 & Knowledge Level💡</h2>
+    <p style="font-size: 2rem; margin-top: 3rem;color: green;"><strong>Preferred Learning Style:</strong> <span id="display-style" style="color: #0056b3;font-weight: bold;">Loading...</span></p>
+    <p style="font-size: 2rem;color: green;margin-top: 2rem;">
+      <strong>Knowledge Level:</strong> 
+      <span id="display-level" style="color: #c1121f;font-weight: bold;">Loading...</span>
+    </p>
+
+    <!-- 🎉 Congrats GIF -->
+    <img src="assets/congrats.gif" alt="Congratulations!" style="max-width: 350px; margin: 3rem auto 2rem; display: block;">
+
+    <!-- Navigation Buttons -->
+    <div style="margin-top: 2rem;">
+      <a href="Assessment.html" class="btn" style="margin-right: 1.5rem; font-size: 1.2rem;">⬅ Back</a>
+    <a href="#" id="proceedBtn" class="btn" style="font-size: 1.2rem;">Proceed ➡</a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+let userStyle = null;
+let userLevel = null;
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    const uid = user.uid;
+
+    // Fetch style
+    firebase.database().ref(`users/${uid}/kolb_responses/preferred_style/style`).once('value')
+      .then(snapshot => {
+        userStyle = (snapshot.val() || '').toUpperCase();
+        document.getElementById('display-style').textContent = userStyle;
+      });
+
+    // Fetch level
+    firebase.database().ref(`users/${uid}/progress/pretest5Answers/level`).once('value')
+      .then(snapshot => {
+        userLevel = (snapshot.val() || '').toUpperCase();
+        document.getElementById('display-level').textContent = userLevel;
+      });
+  }
+});
+
+// Handle proceed button click
+document.getElementById("proceedBtn").addEventListener("click", function(e) {
+  e.preventDefault();
+
+  if (!userStyle || !userLevel) {
+    alert("Still loading user data... please wait.");
+    return;
+  }
+
+  let redirectMap = {
+    "ACTIVIST": {
+      "BEGINNER": "5AccommodatingBeginner.html",
+      "INTERMEDIATE": "5AccommodatingIntermediate.html",
+      "DIFFICULT": "5AccommodatingDiffult.html"
+    },
+    "THEORIST": {
+      "BEGINNER": "5AssimilatingBeginner.html",
+      "INTERMEDIATE": "5AssimilatingIntermediate.html",
+      "DIFFICULT": "5AssimilatingDiffult.html"
+    },
+    "PRAGMATIST": {
+      "BEGINNER": "5ConvergingBeginner.html",
+      "INTERMEDIATE": "5ConvergingIntermediate.html",
+      "DIFFICULT": "5ConvergingDiffult.html"
+    },
+    "REFLECTOR": {
+      "BEGINNER": "5DivergingBeginner.html",
+      "INTERMEDIATE": "5DivergingIntermediate.html",
+      "DIFFICULT": "5DivergingDiffult.html"
+    }
+  };
+
+  const nextPage = redirectMap[userStyle]?.[userLevel];
+
+  if (nextPage) {
+    window.location.href = nextPage;
+  } else {
+    alert("No matching module found. Please contact your instructor.");
+  }
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</footer>
+<footer class="footer">
+
+   &copy; 2025 <span><b>ELECTROSPHERE</b></span> | all rights reserved!
+
+</footer>
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+
+
+
+<script>
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      const uid = user.uid;
+
+      // Get user details from database
+      firebase.database().ref('users/' + uid).once('value').then(function(snapshot) {
+        const userData = snapshot.val();
+
+        if (userData) {
+          // Update profile text (main header)
+          document.querySelectorAll('.profile .name')[0].textContent = userData.name;
+          document.querySelectorAll('.profile .role')[0].textContent = userData.studentNumber;
+          document.querySelectorAll('.profile .email')[0].textContent = userData.email;
+
+          // Update sidebar profile text
+          document.querySelectorAll('.profile .name')[1].textContent = userData.name;
+          document.querySelectorAll('.profile .role')[1].textContent = userData.studentNumber;
+          document.querySelectorAll('.profile .email')[1].textContent = userData.email;
+        }
+      });
+    } else {
+      // Redirect to login if not authenticated
+      window.location.href = "login.html";
+    }
+  });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

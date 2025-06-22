@@ -1,0 +1,579 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&display=swap');
+
+:root{
+   --main-color:#0837a2;
+   --red:#e74c3c;
+   --orange:#48a8cb;
+   --light-color:#faf7f7;
+   --light-bg:#d7edf3;
+   --black:rgb(3, 37, 57);
+   --white:#094074;
+   --border:.1rem solid rgba(0,0,0,.2);
+}
+
+*{
+   font-family: 'Nunito', sans-serif;
+   margin:0; padding:0;
+   box-sizing: border-box;
+   outline: none; border: none;
+   text-decoration: none;
+}
+
+*::selection{
+   background-color: var(--main-color);
+   color:#fff;
+}
+
+html{
+   font-size: 62.5%;
+   overflow-x: hidden;
+}
+
+html::-webkit-scrollbar{
+   width: 1rem;
+   height: .5rem;
+}
+
+html::-webkit-scrollbar-track{
+   background-color: transparent;
+}
+
+html::-webkit-scrollbar-thumb{
+   background-color: rgb(31, 32, 40);
+}
+
+body{
+   background-color: rgb(240, 240, 240);
+   padding-left: 30rem;
+}
+
+body.dark{
+   --light-color:#540101;
+   --light-bg:#000000;
+   --black:#ffffff;
+   --white:#3a3c3f;
+   --border:.1rem solid rgb(250, 242, 242);
+}
+
+body.active{
+   padding-left: 0;
+}
+
+section{
+   padding:2rem;
+   margin: 0 auto;
+   max-width: 1200px;
+}
+
+.heading{
+   font-size: 2.5rem;
+   color:rgb(253, 0, 0);
+   margin-bottom: 2.5rem;
+   border-bottom: var(--border);
+   padding-bottom: 1.5rem;
+   text-transform: capitalize;
+}
+
+.inline-btn,
+.inline-option-btn,
+.inline-delete-btn,
+.btn,
+.delete-btn,
+.option-btn{
+   border-radius: .5rem;
+   color:#03145e;
+   font-size: 1.6rem;
+   font-weight: bold;
+   cursor: pointer;
+   text-transform: capitalize;
+   padding:1rem 3rem;
+   text-align: center;
+   margin-top: 1rem;
+}
+
+.btn,
+.delete-btn,
+.option-btn{
+   display: block;
+   width: 100%;
+}
+
+.inline-btn,
+.inline-option-btn,
+.inline-delete-btn{
+   display: inline-block;
+}
+
+.btn,
+.inline-btn{
+   background-color: rgb(6, 131, 193);
+}
+
+.option-btn,
+.inline-option-btn{
+   background-color:rgb(251, 251, 251);
+}
+
+
+.inline-btn:hover,
+.inline-option-btn:hover,
+.inline-delete-btn:hover,
+.btn:hover,
+.delete-btn:hover,
+.option-btn:hover{
+   background-color: rgb(174, 224, 224);
+   color: rgb(2, 91, 64);
+}
+
+.flex-btn{
+   display: flex;
+   gap: 1rem;
+}
+
+.header{
+   position: sticky;
+   top:0; left:0; right: 0;
+   background-color: rgb(2, 67, 105);
+   z-index: 1000;
+   border-bottom: var(--border);
+}
+
+.header .flex{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   position: relative;
+   padding: 1.5rem 2rem;
+}
+#logo {
+  height: 110px;         /* controls vertical size */
+  width: auto;          /* preserves aspect ratio */
+  object-fit: contain;  /* prevents distortion */
+  display: block;       /* removes unwanted inline spacing */
+}
+
+.header .flex .icons div{
+   font-size: 2rem;
+   color:var(--black);
+   background-color: var(--light-bg);
+   border-radius: .5rem;
+   height: 4rem;
+   width: 4.5rem;
+   line-height: 4.5rem;
+   cursor: pointer;
+   text-align: center;
+   margin-left: .7rem;
+}
+
+.header .flex .icons div:hover{
+   background-color: rgb(244, 197, 13);
+   color:black;
+}
+
+.header .flex .profile{
+   position: absolute;
+   top:120%; right: 2rem;
+   background-color: rgb(2, 67, 105);
+   border-radius: .5rem;
+   padding: 1rem;
+   text-align: center;
+   overflow: hidden;
+   transform-origin: top right;
+   transform: scale(0);
+   transition: .2s linear;
+   width: 30rem;
+}
+
+.header .flex .profile.active{
+   transform: scale(1);
+}
+
+.header .flex .profile .image{
+   height: 7rem;
+   width: 7rem;
+   border-radius: 50%;
+   object-fit: contain;
+   margin-bottom: 1rem;
+}
+
+.header .flex .profile .name{
+   font-size: 1.8rem;
+   color:white;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+}
+
+.header .flex .profile .role{
+   font-size: 1.4rem;
+   color: white; 
+}
+
+.header .flex .profile .email{
+   font-size: 1.4rem;
+   color: white;
+}
+
+#search-btn{
+   display: none;
+}
+
+.side-bar{
+   position: fixed;
+   top: 0; left: 0;
+   width: 30rem;
+   background-color:  rgb(2, 67, 105);
+   height: 100vh;
+   border-right: rgb(250, 245, 245);
+   z-index: 1200;
+}
+
+.side-bar #close-btn{
+   text-align: right;
+   padding: 2rem;
+   display: none;
+}
+
+.side-bar #close-btn i{
+   text-align: right;
+   font-size: 2rem;
+   background:rgb(216, 230, 237);
+   border-radius: .5rem;
+   color:var(--white);
+   cursor: pointer;
+   height: 4rem;
+   width: 4rem;
+   line-height: 4rem;
+   text-align: center;
+}
+
+.side-bar #close-btn i:hover{
+   background-color: rgb(244, 197, 13);
+}
+
+.side-bar .profile{
+   padding:2rem 2rem;
+   text-align: center;
+}
+
+.side-bar .profile .image{
+   height: 8rem;
+   width: 8rem;
+   border-radius: 50%;
+   object-fit: contain;
+   margin-bottom: 0.5rem;
+}
+
+.side-bar .profile .name{
+   font-size: 2rem;
+   color:white;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+}
+
+.side-bar .profile .role{
+   font-size: 1.5rem;
+   color: white;
+}
+.side-bar .profile .email{
+   font-size: 1.5rem;
+   color: white;
+}
+
+.side-bar .navbar a{
+   display: block;
+   padding: 1rem;
+   font-size: 1.5rem;
+}
+
+.side-bar .navbar a i{
+   margin-right: 2rem;
+   color: rgb(232, 253, 0);
+   transition: .2s linear;
+}
+
+.side-bar .navbar a span{
+   color: rgb(255, 255, 255);
+}
+
+.side-bar .navbar a:hover{
+   background-color: rgb(58, 209, 204);
+}
+
+.side-bar .navbar a:hover i{
+   margin-right: 2.5rem;
+}
+
+.side-bar.active{
+   left: -30rem;
+}
+.dashboard-grid .box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+}
+
+.box-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.box-text {
+  max-width: 100%;
+  text-align: center;
+  min-width: 600px; /* or adjust as needed */
+}
+.group-buttons {
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.group-buttons .btn {
+  padding: 0.7rem 2rem;
+  font-size: 1.6rem;
+}
+
+.box-image img {
+  width: 250px;
+  height: auto;
+  border-radius: 1rem;
+  object-fit: contain;
+}
+
+.dashboard-grid .box-container{
+   display: grid;
+   grid-template-columns: 1fr;
+   gap:1.5rem;
+   justify-content: center;
+   align-items: flex-start;
+}
+
+.dashboard-grid .box-container .box{
+   background-color: var(--light-bg);
+   border-radius: .5rem;
+   padding:5rem;
+}
+
+.dashboard-grid .box-container .box .title{
+   font-size: 3.7rem; /* Increased from 2rem */
+   font-weight: 700;
+   color: rgb(1, 67, 102);
+   text-transform: capitalize;
+   white-space: nowrap;         /* prevent line break */
+   overflow: hidden;            /* hide any overflow */
+   text-overflow: ellipsis;     /* optional: adds ... if too long */
+   max-width: 100%;
+}
+
+.box-text .tutor {
+   font-size: 5rem;
+   font-weight: 500;
+   white-space: nowrap;         /* same effect */
+   overflow: hidden;
+   text-overflow: ellipsis;
+   max-width: 100%;
+}
+
+.dashboard-grid .box-container .box .flex{
+   display: flex;
+   flex-wrap: wrap;
+   gap: 15rem;
+   margin-top: 2rem;
+}
+
+
+.dashboard-grid .box-container .flex a:hover{
+   background-color: rgb(151, 161, 203);
+}
+
+.dashboard-grid .box-container .tutor{
+   padding: 1rem 0;
+   font-size: 2rem;
+   font-weight: 500;
+   text-align: center;
+   color: rgb(1, 67, 102);
+   line-height: 2;
+   white-space: nowrap;         /* same effect */
+   overflow: hidden;
+   text-overflow: ellipsis;
+   max-width: 100%;
+}
+
+
+
+
+
+
+
+   .footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgb(169, 160, 154);
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 1rem;
+  color: rgb(222, 243, 246);
+  z-index: 1000;
+}
+.main-content {
+  padding-bottom: 6rem; /* enough space for the fixed footer */
+}
+
+.footer span{
+   color:rgb(255, 255, 255);
+}
+footer.footer {
+    position: fixed;
+  bottom: 0;
+  left: 30rem; /* default when sidebar is open */
+  width: calc(100% - 1rem);
+  padding: 0.5rem;
+  background-color: rgb(2, 67, 105); /* or your preferred color */
+  text-align: center;
+  font-size: 1.6rem;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+body.active footer.footer {
+     left: 3rem; /* or 0 if sidebar is fully hidden */
+  width: calc(100% - 3rem); /* adjust width accordingly */
+}
+body:not(.active) footer.footer {
+   left: 0;
+}
+body.active footer.footer {
+   left: 3rem; /* or whatever looks visually aligned */
+}
+
+
+
+
+@media (max-width:1200px){
+
+   body{
+      padding-left: 0;
+   }
+
+   .side-bar{
+      left: -30rem;
+      transition: .2s linear;
+   }
+
+   .side-bar #close-btn{
+      display: block;
+   }
+
+   .side-bar.active{
+      left: 0;
+      box-shadow: 0 0 0 100vw rgba(0,0,0,.8);
+      border-right: 0;
+   }
+
+}
+
+@media (max-width:991px){
+
+   html{
+      font-size: 55%;
+   }
+
+}
+
+@media (max-width:450px){
+
+   html{
+      font-size: 50%;
+   }
+
+   .flex-btn{
+      gap: 0;
+      flex-flow: column;
+   }
+
+   .dashboard-grid .box-container{
+      grid-template-columns: 1fr;
+   }
+
+   .about .row .image img{
+      height: 25rem;
+   }
+
+}
+.box-content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.box-text {
+   text-align: center;
+}
+
+.box-image img {
+  width: 260px;       /* You can increase this further if needed */
+  height: auto;
+  border-radius: 1rem;
+  object-fit: contain;
+}
+
+.group-buttons {
+  flex-direction: column;
+  align-items: flex-start; /* or center if you prefer centered buttons */
+  gap: 1rem;
+}
+.group-buttons .btn {
+  padding: 0.7rem 2rem;
+  font-size: 1.6rem;
+}
+.group-buttons .btn.active {
+  background-color: var(--main-color);
+  color: white;
+  border: 2px solid var(--white);
+}
+.back-btn {
+  background-color: #e0b100;   /* any color you like */
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.back-btn:hover {
+  background-color: #02263e;
+  color: #fff;
+}
+
+.experiment-section .title {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.experiment-section .tutor {
+  font-size: 1.8rem;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+.navbar a i.fa-lock {
+  margin-right: 10px;
+  color: #777;
+}
+
+
+
+
+
+
+
+
+
+

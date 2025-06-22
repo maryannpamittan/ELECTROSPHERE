@@ -1,0 +1,393 @@
+
+/* Prevent horizontal scrolling */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Global background image for all pages */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  color: white;
+  background-image: url('../assets/background.jpg'); /* Global background for homepage, contact, login, register pages */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Dashboard page background removal */
+body.dashboard, html.dashboard {
+  background-image: none; /* Remove the background image on the dashboard */
+  background-color: #feffff; /* Set a solid background color for the dashboard */
+}
+
+/* Kolb-questionnaire page background removal */
+body.kolb-questionnaire, html.kolb-questionnaire {
+  background-image: none; /* Remove the background image on the kolb-questionnaire */
+  background-color: #feffff; /* Set a solid background color for the kolb-questionnaire */
+}
+
+/* bar with logo and buttons */
+.bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between; /* Logo on the left, buttons on the right */
+    align-items: center;
+    padding: 20px 40px; /* Add some padding */
+    background: rgba(0, 0, 0, 0); /* Dark transparent background */
+    z-index: 1000; /* Stay on top */
+}
+
+/* Logo Section */
+.bar .logo img {
+    width: 300px;
+    height: 150px;;
+}
+
+/* Profile and Log Out buttons container */
+.bar-buttons {
+    display: flex;
+    gap: 20px; /* Space between the buttons */
+}
+
+/* Button styles */
+.bar-buttons .btn {
+    background-color: rgba(8, 5, 215, 0.85); /* semi-transparent blue */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect */
+.bar-buttons .btn:hover {
+    background-color: rgba(0, 123, 255, 1);
+}
+
+/* Centered content */
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  padding: 60px 40px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.container h1 {
+  font-size: 6em;
+  margin: 0;
+}
+
+.container p {
+  font-size: 2em;
+  margin-top: 10px;
+}
+
+/* Get Started Button (below the caption) */
+.get-started-btn {
+  margin-top: 30px;
+  background-color: rgba(8, 5, 215, 0.85);
+  color: white;
+  padding: 10px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1em;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+.get-started-btn:hover {
+  background-color: rgba(8, 5, 215, 0.85);
+}
+
+/* Extra content section */
+.extra-content {
+  padding: 10px 40px;
+  background-color: rgba(74, 177, 237, 0.482); /* optional background for contrast */
+  color: white;
+}
+
+.extra-content h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.extra-content p {
+  font-size: 1.2em;
+  line-height: 1.6;
+}
+
+/* Container for Kolb boxes */
+.kolb-boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+  width: 100%; /* Full width */
+  max-width: 100%;
+}
+
+/* Individual Kolb box styling */
+.kolb-box {
+  background-color: rgba(3, 58, 140, 0.1); /* light transparent box */
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 20px;
+  color: white;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.kolb-box:hover {
+  transform: translateY(-5px);
+}
+
+/* Kolb box headings */
+.kolb-box h3 {
+  margin-top: 0;
+  font-size: 1.4em;
+  margin-bottom: 10px;
+}
+
+/* Styling for Contact page */
+.contact-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 160px;
+  padding-bottom: 60px;
+  color: white;
+  background-color: rgba(146, 21, 21, 0);
+  box-sizing: border-box;
+}
+
+/* Contact box styling */
+.contact-box {
+  background-color: rgba(239, 7, 7, 0.6); /* semi-transparent black */
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  max-width: 1300px;
+  width: 90%;
+  text-align: center;
+}
+
+.contact-box h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+.contact-box .intro,
+.contact-box .closing-msg {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+/* Container for the authors */
+.authors-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 20px 0;
+}
+
+.author {
+  flex: 1;
+  text-align: center;
+  min-width: 180px;
+  max-width: 220px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.author img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border: 2px solid white;
+}
+
+.author p {
+  margin: 2px 0;
+  font-size: 0.95em;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Register page styling */
+.register-page {
+  max-width: 400px;
+  margin: 150px auto 50px;
+  padding: 30px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 12px;
+  color: white;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.register-page h1 {
+  margin-bottom: 25px;
+  font-size: 2.5em;
+}
+
+.register-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.register-page input {
+  padding: 12px 15px;
+  border-radius: 6px;
+  border: none;
+  font-size: 1em;
+}
+
+.register-page button {
+  background-color: rgba(8, 5, 215, 0.85);
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.register-page button:hover {
+  background-color: rgba(0, 123, 255, 1);
+}
+
+.login-text {
+  margin-top: 20px;
+  font-size: 1em;
+}
+
+.login-text a {
+  color: rgba(215, 40, 5, 0.85);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.login-text a:hover {
+  text-decoration: underline;
+}
+
+
+
+.home-grid .box-container{
+   display: grid;
+   grid-template-columns: repeat(auto-fit, 27.5rem);
+   gap:1.5rem;
+   justify-content: center;
+   align-items: flex-start;
+}
+
+.home-grid .box-container .box{
+   background-color: var(--white);
+   border-radius: .5rem;
+   padding:2rem;
+}
+
+.home-grid .box-container .box .title{
+   font-size: 2rem;
+   color: var(--black);
+   text-transform: capitalize;
+}
+
+.home-grid .box-container .box .flex{
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1.5rem;
+   margin-top: 2rem;
+}
+
+.home-grid .box-container .flex a{
+   background-color: var(--light-bg);
+   border-radius: .5rem;
+   padding: 1rem 1.5rem;
+   font-size: 1.5rem;
+}
+
+.home-grid .box-container .flex a i{
+   margin-right: 1rem;
+   color:var(--black);
+}
+
+.home-grid .box-container .flex a span{
+   color:var(--light-color);
+}
+
+.home-grid .box-container .flex a:hover{
+   background-color: var(--black);
+}
+
+.home-grid .box-container .flex a:hover span{
+   color:var(--white);
+}
+
+.home-grid .box-container .flex a:hover i{
+   color:var(--white);
+}
+
+.home-grid .box-container .tutor{
+   padding: 1rem 0;
+   font-size: 1.8rem;
+   color:var(--light-color);
+   line-height: 2;
+}
+
+.home-grid .box-container .likes{
+   color:var(--light-color);
+   font-size: 1.7rem;
+   margin-top: 1.5rem;
+}
+
+.home-grid .box-container .likes span{
+   color:var(--main-color);
+}
+
+
+/* Footer styling */
+footer {
+    background-color: rgba(0, 0, 0, 0.121);
+    text-align: center;
+    color: white;
+    padding: 0px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

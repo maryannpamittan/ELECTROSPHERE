@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Firebase App (core) -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+
+<!-- Firebase Authentication -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+
+<!-- Firebase Database -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+  apiKey: "AIzaSyBvZVUW1xG7uoeHO19bESOQRQCYuPDOzRI",
+  authDomain: "kolbs-website.firebaseapp.com",
+  databaseURL: "https://kolbs-website-default-rtdb.firebaseio.com/",
+  projectId: "kolbs-website",
+  storageBucket: "kolbs-website.appspot.com",
+  messagingSenderId: "297055725374",
+  appId: "1:297055725374:web:9d5bfc9e2ea89427d86e6f"
+};
+
+firebase.initializeApp(firebaseConfig);
+</script> 
+
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>dashboard</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style1.css">
+   
+   <Style>
+    .radio-question {
+  margin-bottom: 2rem;
+}
+
+.question-text {
+  font-weight: bold;
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+.radio-options {
+      display: flex;
+      gap: 30px; /* space between Yes and No */
+      align-items: center;
+}
+
+.radio-label {
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.radio-label input[type="radio"] {
+   transform: scale(1.5);
+   cursor: pointer;
+   accent-color: #0741e2;
+}
+
+   </Style>
+
+</head>
+<body>
+
+<header class="header">
+   
+   <section class="flex">
+      <a href="dashboard.html" class="logo">
+        <img src="assets/logo.png" alt="Website Logo" id="logo">
+      </a>
+
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-lock"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+
+      <div class="profile">
+         <img src="assets/anonymous.png" class="image" alt="">
+         <h3 class="name">Name</h3>
+         <p class="role">Student</p>
+         <p class="email">email@gmail.com</p>
+         <div class="flex-btn">
+            <a href="index.html" class="option-btn">logout</a>
+         </div>
+      </div>
+
+   </section>
+
+</header>   
+
+<div class="side-bar">
+
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+
+   <div class="profile">
+      <img src="assets/anonymous.png" class="image" alt="">
+      <h3 class="name">name</h3>
+      <p class="role">student number</p>
+      <p class="email">email@gmail.com</p>
+      <a href="index.html" class="btn">Logout</a>
+   </div>
+
+   <nav class="navbar">
+      <a href="dashboard.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+      <a href="kolb-questionnaire.html"><i class="fa-solid fa-pen-to-square"></i><span>Kolb's LSI Questionnaire</span></a>
+      <a href="Experiments.html"><i class="fas fa-vr-cardboard"></i><span>Experiment</span></a>
+      <a href="Assessment.html"><i class="fas fa-pencil-square"></i><span>Assessment</span></a>
+      <a href="Modules.html"><i class="fas fa-book"></i><span>Modules</span></a>
+      <a href="DataProfile.html"><i class="fa-solid fa-user-gear"></i><span>Data Profile</span></a>
+
+   </nav>
+
+</div>
+
+
+<!---start-->
+<section style="padding: 2rem; max-width: 1000px; margin: 3rem auto; background-color: white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-family: Arial, sans-serif;">
+
+   <!-- 1. Logo Container -->
+   <div style="text-align: center;">
+      <img src="assets/logo.png" alt="Electrosphere Logo" style="max-width: 320px; margin-bottom: 1rem;">
+   </div>
+
+   <!-- 2. Title + Caption -->
+   <div style="text-align: center; margin-bottom: 1.5rem;">
+    <h2 style="margin-bottom: 0.5rem; font-size: 32px;color: #ff0202;">Field Effect Transistor Biasing Pre-test</h2>
+      <p style="color: #01183b;font-size: 1.4rem;text-align: justified;">
+         This form serves as the Pre-Test for <strong>Experiment 5: Field Effect Transistor (FET) Biasing</strong> under the subject <strong>Electronics 2: Electronic Circuit Analysis and Design</strong>.
+         It is designed to evaluate students’ prior knowledge and understanding of FET biasing concepts before performing the experiment.
+         <br><br>
+         <b>Please answer all questions honestly and to the best of your ability. Good luck!</b>
+      </p>
+   </div>
+
+   <!-- 3. Data Privacy Notice -->
+   <div style="background-color: #d8effb; border-left: 5px solid #444; padding: 1.2rem; margin-bottom: 1.5rem; font-size: 1.1rem;">
+      <h4 style="margin-top: 0; font-size: 1.5rem; margin-bottom: 0.5rem;">Data Privacy</h4>
+      <p style="margin: 0;font-size: 1.2rem;">
+         <strong>DATA PRIVACY NOTICE.</strong> We respect and value your rights as a data subject under the Data Privacy Act (DPA). PUP is committed to protecting the personal data you provide in accordance with the requirements under the DPA and its IRR.
+         In this regard, PUP implements reasonable and appropriate security measures to maintain the confidentiality, integrity, and availability of your personal data. 
+         For more detailed Privacy Statement, you may visit <a href="https://www.pup.edu.ph/privacy/" target="_blank">https://www.pup.edu.ph/privacy/</a>.
+         <br><br>
+         I understand and agree that by filling out this form, I am allowing this institution to collect, process, use, share, and disclose my personal information and also to store it as long as necessary for the fulfillment of the stated purpose and in accordance with applicable laws including the Data Privacy Act of 2012 and its Implementing Rules and Regulations. 
+         The purpose and extent of collection, use, sharing, disclosure, and storage of my personal information is intended only for the seminar.
+      </p>
+   </div>
+
+<!-- 4. Consent -->
+<form id="pretest-form" onsubmit="submitPretest(event)">
+<div class="radio-question">
+
+    <label class="question-text">
+      Do you consent to the data collection stated above?
+    </label>
+
+    <div class="radio-options">
+      <label class="radio-label">
+        <input type="radio" name="consent" value="yes" required onchange="handleConsent(this.value)">
+        Yes
+      </label>
+
+      <label class="radio-label">
+        <input type="radio" name="consent" value="no" onchange="handleConsent(this.value)">
+        No
+      </label>
+    </div>
+  </div>
+
+  <!-- 5. Questionnaire -->
+  <div id="question-section" style="display: none;">
+    <h3 style="margin-top: 2rem; margin-bottom: 1rem;font-size: 2rem; color: #ff0202;">
+      Pre-Test Questions (Choose the correct letter)
+    </h3>
+
+    <div style="font-size: 1.2rem;">
+    </div>
+
+</form>
+
+
+
+            <style>
+      fieldset {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        border: 2px solid #cce3f6;
+        border-radius: 10px;
+        background-color: #f7fbff;
+      }
+      legend {
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: #001f3f;
+        margin-bottom: 0.5rem;
+      }
+      label {
+        display: block;
+        font-size: 1.3rem;
+        margin: 0.4rem 0;
+        cursor: pointer;
+      }
+    </style>
+
+
+   <fieldset style="margin-bottom: 1.5rem; font-size: 18px;">
+      <legend><strong>1. What does FET stand for?</strong></legend>
+      <label><input type="radio" name="q1" value="A" required> A. Field Energy Transistor</label><br>
+      <label><input type="radio" name="q1" value="B"> B. Field Effect Transistor</label><br>
+      <label><input type="radio" name="q1" value="C"> C. Free Electron Transistor</label><br>
+      <label><input type="radio" name="q1" value="D"> D. Frequency Enabled Transistor</label>
+   </fieldset>
+
+   <fieldset style="margin-bottom: 1.5rem; font-size: 18px;">
+      <legend><strong>2. Which terminal of an FET controls the current flow?</strong></legend>
+      <label><input type="radio" name="q2" value="A" required> A. Source</label><br>
+      <label><input type="radio" name="q2" value="B"> B. Drain</label><br>
+      <label><input type="radio" name="q2" value="C"> C. Gate</label><br>
+      <label><input type="radio" name="q2" value="D"> D. Base</label>
+   </fieldset>
+
+   <fieldset style="margin-bottom: 1.5rem; font-size: 18px;">
+      <legend><strong>3. What is the purpose of biasing a field-effect transistor?</strong></legend>
+      <label><input type="radio" name="q3" value="A" required> A. To reduce heat</label><br>
+      <label><input type="radio" name="q3" value="B"> B. To increase power</label><br>
+      <label><input type="radio" name="q3" value="C"> C. To set a proper operating point</label><br>
+      <label><input type="radio" name="q3" value="D"> D. To filter signals</label>
+   </fieldset>
+
+   <fieldset style="margin-bottom: 1.5rem; font-size: 18px;">
+      <legend><strong>4. What happens if an FET is not properly biased?</strong></legend>
+      <label><input type="radio" name="q4" value="A" required> A. It becomes faster</label><br>
+      <label><input type="radio" name="q4" value="B"> B. It operates outside its linear region</label><br>
+      <label><input type="radio" name="q4" value="C"> C. It consumes less power</label><br>
+      <label><input type="radio" name="q4" value="D"> D. It improves gain</label>
+   </fieldset>
+
+   <fieldset style="margin-bottom: 1.5rem; font-size: 18px;">
+      <legend><strong>5. Given a JFET circuit, how can you decrease the drain current?</strong></legend>
+      <label><input type="radio" name="q5" value="A" required> A. Increase the gate-source voltage positively</label><br>
+      <label><input type="radio" name="q5" value="B"> B. Make the gate-source voltage more negative</label><br>
+      <label><input type="radio" name="q5" value="C"> C. Reduce drain-source voltage</label><br>
+      <label><input type="radio" name="q5" value="D"> D. Lower the supply voltage</label>
+   </fieldset>
+
+   <fieldset style="margin-bottom: 1.5rem; font-size: 18px;">
+      <legend><strong>6. In a self-bias configuration, what is the function of the source resistor?</strong></legend>
+      <label><input type="radio" name="q6" value="A" required> A. To block DC current</label><br>
+      <label><input type="radio" name="q6" value="B"> B. To provide thermal stability</label><br>
+      <label><input type="radio" name="q6" value="C"> C. To amplify the input signal</label><br>
+      <label><input type="radio" name="q6" value="D"> D. To increase power gain</label>
+   </fieldset>
+
+   <fieldset style="margin-bottom: 1.5rem; font-size: 18px;">
+      <legend><strong>7. Which biasing method provides the most stable operating point for FETs?</strong></legend>
+      <label><input type="radio" name="q7" value="A" required> A. Fixed bias</label><br>
+      <label><input type="radio" name="q7" value="B"> B. Voltage divider bias</label><br>
+      <label><input type="radio" name="q7" value="C"> C. Source follower</label><br>
+      <label><input type="radio" name="q7" value="D"> D. Gate-only resistor</label>
+   </fieldset>
+
+   <fieldset style="margin-bottom: 1.5rem; font-size: 18px;">
+      <legend><strong>8. Which biasing configuration is more stable and widely used in FET amplifiers?</strong></legend>
+      <label><input type="radio" name="q8" value="A" required> A. Fixed bias</label><br>
+      <label><input type="radio" name="q8" value="B"> B. Self-bias</label><br>
+      <label><input type="radio" name="q8" value="C"> C. Gate resistor only</label><br>
+      <label><input type="radio" name="q8" value="D"> D. Capacitive coupling</label>
+   </fieldset>
+
+   <fieldset style="margin-bottom: 1.5rem; font-size: 18px;">
+      <legend><strong>9. What is the primary role of the source resistor in an N-channel JFET self-bias circuit?</strong></legend>
+      <label><input type="radio" name="q9" value="A" required> A. It supplies power to the gate</label><br>
+      <label><input type="radio" name="q9" value="B"> B. It sets the gate current</label><br>
+      <label><input type="radio" name="q9" value="C"> C. It generates a voltage drop to reverse-bias the gate</label><br>
+      <label><input type="radio" name="q9" value="D"> D. It controls drain-source voltage directly</label>
+   </fieldset>
+<fieldset style="margin-bottom: 1.5rem; font-size: 18px;">
+  <legend><strong>10. If a fixed-bias FET amplifier shows output distortion, what is the most likely cause?</strong></legend>
+  <label><input type="radio" name="q10" value="A" required> A. Improper gate voltage setting</label><br>
+  <label><input type="radio" name="q10" value="B"> B. Too high source resistance</label><br>
+  <label><input type="radio" name="q10" value="C"> C. Reverse-biased drain</label><br>
+  <label><input type="radio" name="q10" value="D"> D. Weak input signal</label>
+</fieldset>
+
+<!-- ✅ Submit button placed right after Q10, still inside the .question-section div -->
+<div style="text-align: center; margin-top: 2rem;">
+  <button type="submit" class="btn">Submit Pre-Test Questionnaire</button>
+</div>
+
+</div>
+</form>
+</section>
+
+
+<script>
+function handleConsent(value) {
+   if (value === 'no') {
+      alert("No consent provided. Pre-test access denied.");
+      window.location.href = "assessment.html";
+   } else {
+      document.getElementById("question-section").style.display = "block";
+   }
+}
+</script>
+
+<script>
+function submitPretest(e) {
+  e.preventDefault();
+
+  const user = firebase.auth().currentUser;
+  if (!user) {
+    alert("User not logged in.");
+    return;
+  }
+
+  const answers = {};
+  for (let i = 1; i <= 10; i++) {
+    const question = document.querySelector(`input[name="q${i}"]:checked`);
+    if (question) {
+      const qNum = String(i).padStart(2, '0');
+      answers[`q${qNum}`] = question.value;
+    } else {
+      alert(`Please answer Question ${i}`);
+      return;
+    }
+  }
+
+    const correctAnswers = {
+    q01: "B", q02: "C", q03: "C", q04: "B",
+    q05: "B", q06: "B", q07: "B",
+    q08: "B", q09: "C", q10: "A"
+  };
+
+  const weights = {
+    q01: 1, q02: 1, q03: 1, q04: 1,
+    q05: 3, q06: 3, q07: 3,
+    q08: 5, q09: 5, q10: 5
+  };
+
+  // Compute total weighted score
+  let totalScore = 0;
+  for (let q in correctAnswers) {
+    if (answers[q] === correctAnswers[q]) {
+      totalScore += weights[q];
+    }
+  }
+
+  // Decide knowledge level based on score
+  let level = "Beginner";
+  if (totalScore >= 16) level = "Advanced";
+  else if (totalScore >= 6) level = "Intermediate";
+
+  const data = {
+    answers: answers,
+    totalScore: totalScore,
+    level: level,
+    timestamp: new Date().toISOString()
+  };
+
+  const uid = user.uid;
+
+
+// Save to Firebase
+firebase.database().ref(`users/${uid}/progress/pretest5Answers`).set(data)
+  .then(() => {
+    alert(` Pre-test submitted!✅\nScore: ${totalScore} points\nLevel: ${level}`);
+      window.location.href = "Experiments.html";
+      })
+  .catch(error => {
+    console.error("Error saving pretest answers:", error);
+    alert("An error occurred. Please try again.");
+  });
+
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</footer>
+<footer class="footer">
+
+   &copy; 2025 <span><b>ELECTROSPHERE</b></span> | all rights reserved!
+
+</footer>
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+
+
+
+<script>
+        firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            const uid = user.uid;
+
+            // Get user data from database
+            firebase.database().ref('users/' + uid).once('value').then(function(snapshot) {
+            const userData = snapshot.val();
+
+            if (userData) {
+                // Set profile data
+                document.querySelectorAll('.profile .name')[0].textContent = userData.name;
+                document.querySelectorAll('.profile .role')[0].textContent = userData.studentNumber;
+                document.querySelectorAll('.profile .email')[0].textContent = userData.email;
+
+                document.querySelectorAll('.profile .name')[1].textContent = userData.name;
+                document.querySelectorAll('.profile .role')[1].textContent = userData.studentNumber;
+                document.querySelectorAll('.profile .email')[1].textContent = userData.email;
+            }
+            });
+
+        } else {
+            window.location.href = "login.html";
+        }
+        });
+
+        
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

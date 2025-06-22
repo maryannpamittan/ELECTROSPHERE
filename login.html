@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Log In</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+</head>
+<body>
+    <header class="bar">
+  <div class="logo">
+    <img src="assets/logo.png" alt="Website Logo" />
+  </div>
+</header>
+
+  <main class="register-page"> <!-- Reuse same class for consistent styling -->
+    <h1>Log In</h1>
+    <form id="login-form">
+      <input type="email" id="email" placeholder="Email Address" required />
+      <input type="password" id="password" placeholder="Password" required />
+      
+
+      <!-- "Remember Me" checkbox as an example -->
+      <div class="remember-me">
+        <label>
+          <input type="checkbox" id="remember-me"> Remember Me
+        </label>
+      </div>
+      
+      <button type="submit" id="login-btn">Log In</button>
+    </form>
+
+    <p class="login-text">
+      Forgot your password? <a href="#" id="reset-link">Reset Password</a><br><br>
+      Don’t have an account? <a href="register.html">Sign Up</a><br><br>
+      <a href="index.html">Home</a>
+    </p>
+  </main>
+
+  <script src="js/login.js"></script>
+</body>
+</html>
